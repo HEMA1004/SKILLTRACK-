@@ -389,7 +389,20 @@ footer {
         <h2>Internship Tracker 💼</h2>
 
         <div class="internship">
+<div class="add-internship">
+    <input type="text" id="companyName" placeholder="Company Name">
+    <input type="text" id="roleName" placeholder="Role">
+    <input type="date" id="deadline">
+    
+    <select id="internshipStatus">
+        <option value="Applied">Applied</option>
+        <option value="Interview">Interview</option>
+        <option value="Selected">Selected</option>
+        <option value="Rejected">Rejected</option>
+    </select>
 
+    <button onclick="addInternship()">+ Add Internship</button>
+</div>
             <h3>Web Development Intern</h3>
 
             <p>Company: Example Company</p>
@@ -508,7 +521,34 @@ function addSkill() {
         skillsSection.appendChild(newSkill);
     });
 }
-    displaySkills();
+    displaySkills();function addInternship() {
+    const company = document.getElementById("companyName").value;
+    const role = document.getElementById("roleName").value;
+    const deadline = document.getElementById("deadline").value;
+    const status = document.getElementById("internshipStatus").value;
+
+    if (company === "" || role === "" || deadline === "") {
+        alert("Please fill all internship details");
+        return;
+    }
+
+    const internships = JSON.parse(localStorage.getItem("internships")) || [];
+
+    internships.push({
+        company: company,
+        role: role,
+        deadline: deadline,
+        status: status
+    });
+
+    localStorage.setItem("internships", JSON.stringify(internships));
+
+    alert("Internship added successfully!");
+
+    document.getElementById("companyName").value = "";
+    document.getElementById("roleName").value = "";
+    document.getElementById("deadline").value = "";
+}
 </script>
 
 </body>
