@@ -531,7 +531,7 @@ function addSkill() {
         alert("Please fill all internship details");
         return;
     }
-
+dispayInternships ();
     const internships = JSON.parse(localStorage.getItem("internships")) || [];
 
     internships.push({
