@@ -471,10 +471,28 @@ function addSkill() {
         return;
     }
 
-    alert(name + " added with " + progress + "% progress!");
+    const skillsSection = document.querySelector(".section");
+
+    const newSkill = document.createElement("div");
+    newSkill.className = "skill";
+
+    newSkill.innerHTML = `
+        <div class="skill-title">
+            <span>${name}</span>
+            <span>${progress}%</span>
+        </div>
+
+        <div class="progress">
+            <div class="bar" style="width:${progress}%"></div>
+        </div>
+    `;
+
+    skillsSection.appendChild(newSkill);
 
     document.getElementById("skillName").value = "";
     document.getElementById("skillProgress").value = "";
+
+    alert(name + " added successfully!");
 }
 </script>
 
