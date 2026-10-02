@@ -471,29 +471,43 @@ function addSkill() {
         return;
     }
 
-    const skillsSection = document.querySelector(".section");
+    let skills = JSON.parse(localStorage.getItem("skills")) || [];
 
-    const newSkill = document.createElement("div");
-    newSkill.className = "skill";
+    skills.push({
+        name: name,
+        progress: progress
+    });
 
-    newSkill.innerHTML = `
-        <div class="skill-title">
-            <span>${name}</span>
-            <span>${progress}%</span>
-        </div>
+    localStorage.setItem("skills", JSON.stringify(skills));
 
-        <div class="progress">
-            <div class="bar" style="width:${progress}%"></div>
-        </div>
-    `;
-
-    skillsSection.appendChild(newSkill);
+    displaySkills();
 
     document.getElementById("skillName").value = "";
     document.getElementById("skillProgress").value = "";
 
-    alert(name + " added successfully!");
-}
+    alert(name + " saved successfully!");
+}function displaySkills() {
+    const skillsSection = document.querySelector(".section");
+    const skills = JSON.parse(localStorage.getItem("skills")) || [];
+
+    skills.forEach(skill => {
+        const newSkill = document.createElement("div");
+        newSkill.className = "skill";
+
+        newSkill.innerHTML = `
+            <div class="skill-title">
+                <span>${skill.name}</span>
+                <span>${skill.progress}%</span>
+            </div>
+
+            <div class="progress">
+                <div class="bar" style="width:${skill.progress}%"></div>
+            </div>
+        `;
+
+        skillsSection.appendChild(newSkill);
+    });
+}displaySkills();
 </script>
 
 </body>
