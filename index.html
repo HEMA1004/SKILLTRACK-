@@ -3,34 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SkillTrack | Student Dashboard</title>
+<title>SkillTrack | Student Portal</title>
 
 <style>
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
 body {
-    background: #f5f7ff;
+    background: #f4f6ff;
     color: #1f2937;
+}
+
+/* LOGIN */
+
+#loginPage {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+
+.login-box {
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    padding: 40px;
+    border-radius: 22px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.logo {
+    text-align: center;
+    color: #4f46e5;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+.login-box label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 18px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    outline: none;
+}
+
+.login-box input:focus {
+    border-color: #4f46e5;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #4f46e5;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background: #4338ca;
+}
+
+#error {
+    color: #dc2626;
+    text-align: center;
+    margin-top: 15px;
+    display: none;
+}
+
+/* DASHBOARD */
+
+#dashboard {
+    display: none;
 }
 
 header {
     background: linear-gradient(135deg, #4f46e5, #7c3aed);
     color: white;
-    padding: 35px 8%;
+    padding: 25px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header h1 {
-    font-size: 34px;
-    margin-bottom: 8px;
+    font-size: 30px;
 }
 
-header p {
-    font-size: 16px;
+.logout {
+    padding: 9px 18px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
 .container {
@@ -39,7 +127,9 @@ header p {
     margin: 30px auto;
 }
 
-.welcome, .card, .section {
+.welcome,
+.card,
+.section {
     background: white;
     border-radius: 18px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.07);
@@ -48,10 +138,6 @@ header p {
 .welcome {
     padding: 25px;
     margin-bottom: 25px;
-}
-
-.welcome h2 {
-    margin-bottom: 8px;
 }
 
 .cards {
@@ -65,14 +151,11 @@ header p {
     padding: 25px;
 }
 
-.card h3 {
-    margin-bottom: 12px;
-}
-
 .number {
     font-size: 32px;
     font-weight: bold;
     color: #4f46e5;
+    margin: 10px 0;
 }
 
 .section {
@@ -133,23 +216,76 @@ footer {
     .cards {
         grid-template-columns: 1fr;
     }
+
+    header {
+        padding: 20px;
+    }
+
+    .container {
+        width: 90%;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- LOGIN PAGE -->
+
+<div id="loginPage">
+
+    <div class="login-box">
+
+        <div class="logo">SkillTrack 🚀</div>
+
+        <p>Student Skill & Internship Tracker</p>
+
+        <label>Student ID</label>
+        <input type="text" id="studentId" placeholder="Enter Student ID">
+
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter Password">
+
+        <button class="login-btn" onclick="login()">Login</button>
+
+        <div id="error">
+            Invalid Student ID or Password
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div id="dashboard">
+
 <header>
-    <h1>SkillTrack 🚀</h1>
-    <p>Student Skill & Internship Tracker</p>
+
+    <div>
+        <h1>SkillTrack 🚀</h1>
+        <p>Student Dashboard</p>
+    </div>
+
+    <button class="logout" onclick="logout()">Logout</button>
+
 </header>
+
 
 <div class="container">
 
     <div class="welcome">
+
         <h2>Welcome, Hema 👋</h2>
-        <p>Track your skills, learning progress and internship journey in one simple dashboard.</p>
+
+        <p>
+            Track your skills, learning progress and internship journey
+            in one place.
+        </p>
+
     </div>
+
 
     <div class="cards">
 
@@ -173,65 +309,135 @@ footer {
 
     </div>
 
+
     <div class="section">
+
         <h2>My Skills 📚</h2>
 
         <div class="skill">
+
             <div class="skill-title">
                 <span>HTML</span>
                 <span>80%</span>
             </div>
+
             <div class="progress">
                 <div class="bar" style="width:80%"></div>
             </div>
+
         </div>
 
+
         <div class="skill">
+
             <div class="skill-title">
                 <span>CSS</span>
                 <span>70%</span>
             </div>
+
             <div class="progress">
                 <div class="bar" style="width:70%"></div>
             </div>
+
         </div>
 
+
         <div class="skill">
+
             <div class="skill-title">
                 <span>Python</span>
                 <span>50%</span>
             </div>
+
             <div class="progress">
                 <div class="bar" style="width:50%"></div>
             </div>
+
         </div>
 
     </div>
 
+
     <div class="section">
+
         <h2>Internship Tracker 💼</h2>
 
         <div class="internship">
+
             <h3>Web Development Intern</h3>
+
             <p>Company: Example Company</p>
+
             <p>Application Status:</p>
+
             <span class="status">Applied</span>
+
         </div>
 
+
         <div class="internship">
+
             <h3>Python Developer Intern</h3>
+
             <p>Company: Example Company</p>
+
             <p>Application Status:</p>
+
             <span class="status">Applied</span>
+
         </div>
 
     </div>
 
 </div>
 
+
 <footer>
-    <p>© 2026 SkillTrack | Built by Hema</p>
+    © 2026 SkillTrack | Built by Hema
 </footer>
+
+</div>
+
+
+<script>
+
+function login() {
+
+    const studentId =
+        document.getElementById("studentId").value;
+
+    const password =
+        document.getElementById("password").value;
+
+    if (studentId === "HEMA1004" && password === "1234") {
+
+        document.getElementById("loginPage").style.display = "none";
+
+        document.getElementById("dashboard").style.display = "block";
+
+    } else {
+
+        document.getElementById("error").style.display = "block";
+
+    }
+}
+
+
+function logout() {
+
+    document.getElementById("dashboard").style.display = "none";
+
+    document.getElementById("loginPage").style.display = "flex";
+
+    document.getElementById("studentId").value = "";
+
+    document.getElementById("password").value = "";
+
+    document.getElementById("error").style.display = "none";
+
+}
+
+</script>
 
 </body>
 </html>
