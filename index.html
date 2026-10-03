@@ -522,38 +522,6 @@ function addSkill() {
     });
 }
     displaySkills();
-  function addInternship() {
-    const company = document.getElementById("companyName").value;
-    const role = document.getElementById("roleName").value;
-    const deadline = document.getElementById("deadline").value;
-    const status = document.getElementById("internshipStatus").value;
-
-    if (company === "" || role === "" || deadline === "") {
-        alert("Please fill all internship details");
-        return;
-    }
-
-    const list = document.getElementById("internshipList");
-
-    const card = document.createElement("div");
-    card.className = "internship-card";
-
-    card.innerHTML = `
-        <h3>${company}</h3>
-        <p><strong>Role:</strong> ${role}</p>
-        <p><strong>Deadline:</strong> ${deadline}</p>
-        <p><strong>Status:</strong> ${status}</p>
-    `;
-
-    list.appendChild(card);
-
-    document.getElementById("companyName").value = "";
-    document.getElementById("roleName").value = "";
-    document.getElementById("deadline").value = "";
-
-    alert("Internship added successfully!");
-}
-    
 
     const internships = JSON.parse(localStorage.getItem("internships")) || [];
 
