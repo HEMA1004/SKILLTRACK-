@@ -548,7 +548,20 @@ function addInternship() {
 
 
     list.appendChild(card);
+let internships =
+    JSON.parse(localStorage.getItem("internships")) || [];
 
+internships.push({
+    company: company,
+    role: role,
+    deadline: deadline,
+    status: status
+});
+
+localStorage.setItem(
+    "internships",
+    JSON.stringify(internships)
+);
 
     document.getElementById("companyName").value = "";
 
