@@ -164,6 +164,23 @@ h2 {
     margin: 5px 0;
     color: #555;
 }
+    .internship-card p {
+    margin: 5px 0;
+    color: #555;
+}
+
+#deadlineReminder {
+    margin-top: 15px;
+}
+
+.deadline-warning {
+    background: #fff7ed;
+    border-left: 5px solid #f97316;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    color: #9a3412;
+}
 .analytics {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -455,7 +472,7 @@ h2 {
 
             </div>
 
-
+<div id="deadlineReminder"></div>
             <div id="internshipList"></div>
 
         </div>
@@ -704,6 +721,46 @@ document.getElementById("appliedCount").textContent =
 
 document.getElementById("selectedCount").textContent =
     internships.filter(i => i.status === "Selected").length;
+    function checkDeadlines() {
+
+    const internships =
+        JSON.parse(localStorage.getItem("internships")) || [];
+
+    const reminder =
+        document.getElementById("deadlineReminder");
+
+    reminder.innerHTML = "";
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    internships.forEach(internship => {
+
+        const deadline = new Date(internship.deadline);
+        deadline.setHours(0, 0, 0, 0);
+
+        const difference =
+            Math.ceil(
+                (deadline - today) / (1000 * 60 * 60 * 24)
+            );
+
+        if (difference >= 0 && difference <= 7) {
+
+            const warning =
+                document.createElement("div");
+
+            warning.className = "deadline-warning";
+
+            warning.innerHTML =
+                `⚠️ <strong>${internship.company}</strong>
+                deadline is in ${difference} day(s)!`;
+
+            reminder.appendChild(warning);
+        }
+    });
+}
+
+checkDeadlines();
 </script>
 
 </body>
