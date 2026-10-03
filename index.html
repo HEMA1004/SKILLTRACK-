@@ -393,7 +393,7 @@ footer {
     <input type="text" id="companyName" placeholder="Company Name">
     <input type="text" id="roleName" placeholder="Role">
     <input type="date" id="deadline">
-    
+    <div class="internship-list"></div>
     <select id="internshipStatus">
         <option value="Applied">Applied</option>
         <option value="Interview">Interview</option>
@@ -521,7 +521,8 @@ function addSkill() {
         skillsSection.appendChild(newSkill);
     });
 }
-    displaySkills();function addInternship() {
+    displaySkills();
+    function addInternship() {
     const company = document.getElementById("companyName").value;
     const role = document.getElementById("roleName").value;
     const deadline = document.getElementById("deadline").value;
@@ -531,6 +532,28 @@ function addSkill() {
         alert("Please fill all internship details");
         return;
     }
+
+    const list = document.getElementById("internshipList");
+
+    const card = document.createElement("div");
+    card.className = "internship-card";
+
+    card.innerHTML = `
+        <h3>${company}</h3>
+        <p><strong>Role:</strong> ${role}</p>
+        <p><strong>Deadline:</strong> ${deadline}</p>
+        <p><strong>Status:</strong> ${status}</p>
+    `;
+
+    list.appendChild(card);
+
+    document.getElementById("companyName").value = "";
+    document.getElementById("roleName").value = "";
+    document.getElementById("deadline").value = "";
+
+    alert("Internship added successfully!");
+}
+    
 dispayInternships ();
     const internships = JSON.parse(localStorage.getItem("internships")) || [];
 
