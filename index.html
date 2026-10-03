@@ -523,15 +523,7 @@ function addSkill() {
 }
     displaySkills();
 
-    const internships = JSON.parse(localStorage.getItem("internships")) || [];
-
-    internships.push({
-        company: company,
-        role: role,
-        deadline: deadline,
-        status: status
-    });
-
+   
     localStorage.setItem("internships", JSON.stringify(internships));
 
     alert("Internship added successfully!");
