@@ -574,6 +574,25 @@ localStorage.setItem(
 
 displaySkills();
 
+let savedInternships =
+    JSON.parse(localStorage.getItem("internships")) || [];
+
+savedInternships.forEach(internship => {
+
+    const card = document.createElement("div");
+
+    card.className = "internship-card";
+
+    card.innerHTML = `
+        <h3>${internship.company}</h3>
+        <p><strong>Role:</strong> ${internship.role}</p>
+        <p><strong>Deadline:</strong> ${internship.deadline}</p>
+        <p><strong>Status:</strong> ${internship.status}</p>
+    `;
+
+    document.getElementById("internshipList").appendChild(card);
+});displaySkills();
+
 </script>
 
 </body>
