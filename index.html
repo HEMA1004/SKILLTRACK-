@@ -240,7 +240,28 @@ h2 {
     color: #6b7280;
     font-size: 14px;
 }
+.dark-mode {
+    background: #111827 !important;
+    color: #f9fafb;
+}
 
+.dark-mode #dashboard {
+    background: #111827;
+}
+
+.dark-mode .profile-box,
+.dark-mode .section,
+.dark-mode .internship,
+.dark-mode .analytics-card {
+    background: #1f2937;
+    color: #f9fafb;
+}
+
+.dark-mode h2,
+.dark-mode .profile-box p,
+.dark-mode .analytics-card p {
+    color: #e5e7eb;
+}
 @media (max-width: 700px) {
     .badges {
         grid-template-columns: 1fr;
@@ -299,7 +320,7 @@ h2 {
             <h1>SkillTrack Dashboard</h1>
             <p>Welcome, Hema 👋</p>
         </div>
-
+<button onclick="toggleDarkMode()">🌙 Dark Mode</button>
         <button onclick="logout()">Logout</button>
 
     </div>
@@ -822,6 +843,9 @@ document.getElementById("selectedCount").textContent =
 }
 
 checkDeadlines();
+    function toggleDarkMode() {
+    document.getElementById("dashboard").classList.toggle("dark-mode");
+}
 </script>
 
 </body>
