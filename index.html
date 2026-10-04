@@ -211,7 +211,41 @@ h2 {
     font-weight: bold;
     color: #4f46e5;
 }
+.badges {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
 
+.badge {
+    background: #f5f3ff;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid #e0e7ff;
+}
+
+.badge div {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.badge strong {
+    display: block;
+    color: #4f46e5;
+    margin-bottom: 6px;
+}
+
+.badge p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+@media (max-width: 700px) {
+    .badges {
+        grid-template-columns: 1fr;
+    }
+}
 @media (max-width: 700px) {
     .analytics {
         grid-template-columns: repeat(2, 1fr);
@@ -473,6 +507,33 @@ h2 {
             </div>
 
 <div id="deadlineReminder"></div>
+     <div class="section">
+
+    <h2>🏆 Achievement Badges</h2>
+
+    <div class="badges">
+
+        <div class="badge">
+            <div>💻</div>
+            <strong>Skill Starter</strong>
+            <p>Added a skill</p>
+        </div>
+
+        <div class="badge">
+            <div>💼</div>
+            <strong>Internship Hunter</strong>
+            <p>Added an internship</p>
+        </div>
+
+        <div class="badge">
+            <div>🎯</div>
+            <strong>Goal Setter</strong>
+            <p>Started learning goals</p>
+        </div>
+
+    </div>
+
+</div>    
             <div id="internshipList"></div>
 
         </div>
