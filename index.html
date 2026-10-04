@@ -846,6 +846,23 @@ checkDeadlines();
     function toggleDarkMode() {
     document.getElementById("dashboard").classList.toggle("dark-mode");
 }
+    function searchInternships() {
+    const searchText =
+        document.getElementById("internshipSearch").value.toLowerCase();
+
+    const cards =
+        document.querySelectorAll(".internship-card");
+
+    cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+
+        if (text.includes(searchText)) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
 </script>
 
 </body>
