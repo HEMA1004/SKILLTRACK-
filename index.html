@@ -521,7 +521,11 @@ h2 {
         <div class="internship">
 
             <h2>💼 Internship Tracker</h2>
+<h2>💼 Internship Tracker</h2>
 
+<button onclick="clearInternships()" style="background:#dc2626;">
+    🗑️ Clear Test Internships
+</button>
             <div class="add-internship">
 
                 <input
@@ -827,9 +831,11 @@ savedInternships.forEach(internship => {
 
     document.getElementById("internshipList").appendChild(card);
 });displaySkills();
-document.getElementById("totalSkills").textContent =
-    (JSON.parse(localStorage.getItem("skills")) || []).length;
+const savedSkills =
+    JSON.parse(localStorage.getItem("skills")) || [];
 
+document.getElementById("totalSkills").textContent =
+    3 + savedSkills.length;
 const internships =
     JSON.parse(localStorage.getItem("internships")) || [];
 
@@ -900,6 +906,17 @@ checkDeadlines();
             card.style.display = "none";
         }
     });
+}
+    function clearInternships() {
+    localStorage.removeItem("internships");
+    document.getElementById("internshipList").innerHTML = "";
+    document.getElementById("deadlineReminder").innerHTML = "";
+
+    document.getElementById("totalInternships").textContent = "0";
+    document.getElementById("appliedCount").textContent = "0";
+    document.getElementById("selectedCount").textContent = "0";
+
+    alert("Test internships cleared!");
 }
 </script>
 
